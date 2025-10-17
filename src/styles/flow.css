@@ -1,0 +1,90 @@
+/* Flow Builder Styles */
+.flowbuilder-node {
+  border-radius: 8px;
+  color: var(--foreground);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.node-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.node-label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.node-icon {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+.node-status {
+  color: var(--destructive);
+  font-size: 0.75rem;
+}
+
+.node-actions {
+  display: flex;
+  align-items: center;
+}
+
+.wait-block {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.edge-yes-label {
+  color: #16a34a;
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+
+.edge-no-label {
+  color: #dc2626;
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+
+.sidebar-node-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  cursor: grab;
+  background: var(--background);
+  gap: 12px;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+
+.sidebar-node-item:hover {
+  border-color: var(--primary);
+  background-color: var(--accent);
+}
+
+.sidebar-node-icon {
+  font-size: 1.2rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-background {
+  background-color: var(--background);
+}

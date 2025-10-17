@@ -1,0 +1,95 @@
+.ProseMirror {
+  @apply p-6 outline-none;
+  min-height: inherit;
+}
+
+.ProseMirror > * + * {
+  @apply mt-4;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  @apply pl-6;
+}
+
+.ProseMirror ul {
+  @apply list-disc;
+}
+
+.ProseMirror ol {
+  @apply list-decimal;
+}
+
+.ProseMirror h1 {
+  @apply text-4xl font-bold leading-tight text-foreground;
+}
+
+.ProseMirror h2 {
+  @apply text-3xl font-bold leading-tight text-foreground;
+}
+
+.ProseMirror h3 {
+  @apply text-2xl font-bold leading-tight text-foreground;
+}
+
+.ProseMirror code {
+  @apply rounded-md border border-border/50 bg-muted px-2 py-1 font-mono text-sm text-muted-foreground;
+}
+
+.ProseMirror pre {
+  @apply rounded-lg border border-border/50 bg-muted p-4 font-mono text-sm text-muted-foreground shadow-sm;
+}
+
+.ProseMirror img {
+  @apply h-auto max-w-full rounded-lg border border-border/20 shadow-sm;
+  &.ProseMirror-selectednode {
+    @apply shadow-lg outline outline-2 outline-primary;
+  }
+}
+
+.ProseMirror blockquote {
+  @apply rounded-r-md border-l-4 border-primary/30 bg-muted/30 py-2 pl-4 italic text-muted-foreground;
+}
+
+.ProseMirror a {
+  @apply text-primary underline decoration-primary/50 underline-offset-2 transition-all duration-200 hover:text-primary/80 hover:decoration-primary;
+}
+
+.ProseMirror p {
+  @apply text-base leading-relaxed text-foreground;
+}
+
+.ProseMirror [data-type="variable"] {
+  @apply inline-flex items-center rounded-md bg-gradient-to-r from-primary/10 to-primary/5 px-3 py-1.5 text-sm font-medium text-primary;
+  @apply border border-primary/20 shadow-sm backdrop-blur-sm;
+  @apply cursor-pointer select-none transition-all duration-200;
+  @apply hover:border-primary/30 hover:from-primary/20 hover:to-primary/10 hover:shadow-md;
+}
+
+.ProseMirror [data-type="variable"].ProseMirror-selectednode {
+  @apply shadow-lg ring-2 ring-primary/50 ring-offset-2;
+}
+
+.ProseMirror[data-placeholder]:before {
+  @apply pointer-events-none absolute text-muted-foreground/60;
+  content: attr(data-placeholder);
+}
+
+.ProseMirror:focus {
+  @apply outline-none;
+}
+
+/* Smooth transitions for all interactive elements */
+.rich-text-editor * {
+  @apply transition-colors duration-200;
+}
+
+/* Enhanced focus states */
+.ProseMirror:focus-within {
+  @apply outline-none;
+}
+
+/* Better selection styling */
+.ProseMirror ::selection {
+  @apply bg-primary/20;
+}

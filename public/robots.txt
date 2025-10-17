@@ -1,0 +1,49 @@
+# Robots.txt for Bridge AI Sales Platform
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://bridge-sales.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Block access to admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /_next/
+Disallow: /dashboard/
+
+# Allow access to important pages
+Allow: /features
+Allow: /pricing
+Allow: /about
+Allow: /contact
+Allow: /blog
+Allow: /help
+
+# Block specific file types
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
+
+# Allow social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
