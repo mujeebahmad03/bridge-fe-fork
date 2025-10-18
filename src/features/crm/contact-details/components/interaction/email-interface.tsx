@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { EmailComposer } from "./email-composer";
 /* import { EmailThread } from "./email-thread";*/
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,8 +13,41 @@ import {
 } from "@/components/ui/select";
 import { Plus, Search, Filter, RefreshCwIcon as Refresh } from "lucide-react";
 import { NewEmailThread } from "./email-trend";
+import { EmailModal } from "../contact/modals/email-modal";
 
 // Mock data
+const contact = {
+  id: "1",
+  name: "Nadia Carta",
+  role: "CEO",
+  email: "nadia.carta@company.com",
+  phone: "+1 234 567 890",
+  avatar: "/professional-woman-headshot.png",
+  address: "1600 Amphitheatre Parkway, Mountain View, CA 94043",
+  company: {
+    name: "Google",
+    industry: "Software and Technology",
+    size: "100-500",
+    location: "New York, US",
+    website: "https://about.google/",
+    description:
+      "Leading technology company focused on organizing the world's information and making it universally accessible and useful.",
+  },
+  websiteUrl: "https://about.google/",
+  linkedinUrl: "linkedin.com/in/nadiacarta",
+  status: "Pending",
+  owner: null,
+  value: 0,
+  isCompany: true,
+  leadStatus: "qualified",
+  campaignStatus: {
+    name: "Enterprise Outreach Campaign",
+    step: 3,
+    totalSteps: 5,
+    nextAction: "Send follow-up email with proposal",
+  },
+};
+
 const mockThreads = [
   {
     id: "thread-1",
@@ -92,21 +124,14 @@ export function EmailInterface() {
     setExpandedThreads(newExpanded);
   }; */
 
-  const handleSendEmail = (data: EmailData) => {
+  /* const handleSendEmail = (data: EmailData) => {
     console.log("Sending email:", data);
     // Here you would typically send the email via API
     setShowComposer(false);
     setReplyingToMessage(null);
-  };
+  }; */
 
-  /* const handleReply = (threadId: string, emailId: string) => {
-    setReplyingToMessage({ threadId, emailId, isReplyAll: false });
-  };
-
-  const handleReplyAll = (threadId: string, emailId: string) => {
-    setReplyingToMessage({ threadId, emailId, isReplyAll: true });
-  };
-
+  /*
   const handleForward = (threadId: string, emailId: string) => {
     console.log("Forward email:", threadId, emailId);
     // Implement forward functionality
@@ -175,15 +200,15 @@ export function EmailInterface() {
 
       {/* Email Content */}
       <div className="scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent flex-1 overflow-y-auto">
-        {showComposer && !replyingToMessage && (
+        {/* {showComposer && !replyingToMessage && (
           <div className="border-b border-border p-4">
             <EmailComposer
               isReply={false}
-              onSend={handleSendEmail}
+              onSend={() => {}}
               onCancel={() => setShowComposer(false)}
             />
           </div>
-        )}
+        )} */}
 
         <div className="p-4">
           {filteredThreads.length === 0 ? (
@@ -230,8 +255,14 @@ export function EmailInterface() {
                     ]}
                     when="Monday, Oct 6, 2025 8am - 9am (Eastern Time - New York)"
                     accepted={true}
-                    onReply={() => {}}
-                    onReplyWithAI={() => {}}
+                    onReply={() => {
+                      setReplyingToMessage({
+                        threadId: "one subject",
+                        emailId: "egondu@gmail.com",
+                        isReplyAll: false,
+                      });
+                      setShowComposer(true);
+                    }}
                   />
                 </>
               ))}
@@ -239,6 +270,18 @@ export function EmailInterface() {
           )}
         </div>
       </div>
+
+      <EmailModal
+        isOpen={showComposer}
+        onClose={() => {
+          setShowComposer(false);
+          setReplyingToMessage(null);
+        }}
+        contact={contact}
+        isReply={replyingToMessage ? true : false}
+        existingEmail={replyingToMessage?.emailId}
+        existingSubject={replyingToMessage?.threadId}
+      />
     </div>
   );
 }
