@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import dynamic from "next/dynamic";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,8 +13,10 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Contact } from "@/crmContacts/types";
+import { RiBardFill } from "@remixicon/react";
+
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 interface EmailModalProps {
   isOpen: boolean;
@@ -39,12 +42,15 @@ export function EmailModal({ isOpen, onClose, contact }: EmailModalProps) {
     toast.success("Email sent successfully!");
   };
 
+  const useAi = () => {};
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
           <DialogTitle>Send Email to {contact.name}</DialogTitle>
         </DialogHeader>
+
         <div className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email-subject">Subject</Label>
@@ -60,7 +66,7 @@ export function EmailModal({ isOpen, onClose, contact }: EmailModalProps) {
 
           <div className="space-y-2">
             <Label htmlFor="email-message">Message</Label>
-            <Textarea
+            {/* <Textarea
               id="email-message"
               placeholder="Enter your message..."
               value={emailForm.message}
@@ -68,20 +74,40 @@ export function EmailModal({ isOpen, onClose, contact }: EmailModalProps) {
                 setEmailForm({ ...emailForm, message: e.target.value })
               }
               className="min-h-[120px]"
-            />
+            /> */}
+            <div>
+              <ReactQuill
+                value={emailForm.message}
+                onChange={(value) =>
+                  setEmailForm({ ...emailForm, message: value })
+                }
+                placeholder="Write your message..."
+                className="rounded-md border"
+                style={{ minHeight: "200px" }}
+              />
+            </div>
           </div>
 
-          <div className="flex gap-2 pt-4">
+          <div className="flex justify-between gap-2 pt-4">
             <Button
-              onClick={onClose}
-              variant="outline"
-              className="flex-1 bg-transparent"
+              onClick={useAi}
+              className="w-fit bg-purple-100 text-purple-500 hover:bg-purple-200"
             >
-              Cancel
+              <RiBardFill className="h-2 w-2" />
+              Help me write
             </Button>
-            <Button onClick={handleSendEmail} className="flex-1">
-              Send Email
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                onClick={onClose}
+                variant="outline"
+                className="flex-1 bg-transparent"
+              >
+                Cancel
+              </Button>
+              <Button onClick={handleSendEmail} className="flex-1">
+                Send Email
+              </Button>
+            </div>
           </div>
         </div>
       </DialogContent>

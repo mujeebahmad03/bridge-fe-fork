@@ -4,6 +4,7 @@ import { Montserrat } from "next/font/google";
 import { RootProviders } from "@/components/providers";
 import { generateMetaData, RootHeader } from "@/components/home/seo";
 
+import "react-quill-new/dist/quill.snow.css";
 import "@/styles/globals.css";
 
 const montserrat = Montserrat({

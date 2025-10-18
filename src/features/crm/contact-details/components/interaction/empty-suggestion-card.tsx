@@ -31,9 +31,9 @@ export const EmptySuggestionCard = ({
           <div className="relative flex min-h-[200px] w-full items-center justify-center rounded-xl blur-md">
             <div className="absolute inset-0 flex flex-col gap-3 p-3">
               <div className="h-4 w-3/4 rounded bg-purple-100 dark:bg-purple-500" />
-              <div className="h-4 w-full rounded bg-purple-100" />
-              <div className="h-4 w-2/3 rounded bg-purple-100" />
-              <div className="h-4 w-1/2 rounded bg-purple-100" />
+              <div className="h-4 w-full rounded bg-purple-100 dark:bg-purple-500" />
+              <div className="h-4 w-2/3 rounded bg-purple-100 dark:bg-purple-500" />
+              <div className="h-4 w-1/2 rounded bg-purple-100 dark:bg-purple-500" />
             </div>
 
             <div className="relative top-0 z-10 w-full space-y-4 rounded-lg p-6 text-center backdrop-blur-sm">

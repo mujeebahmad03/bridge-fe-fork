@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
   DialogContent,
@@ -12,6 +11,9 @@ import {
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
 import { Contact } from "@/crmContacts/types";
+import dynamic from "next/dynamic";
+
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 interface NoteModalProps {
   isOpen: boolean;
@@ -45,7 +47,7 @@ export function NoteModal({ isOpen, onClose, contact }: NoteModalProps) {
         <div className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="note-content">Note</Label>
-            <Textarea
+            {/* <Textarea
               id="note-content"
               placeholder="Enter your note..."
               value={noteForm.content}
@@ -53,6 +55,13 @@ export function NoteModal({ isOpen, onClose, contact }: NoteModalProps) {
                 setNoteForm({ ...noteForm, content: e.target.value })
               }
               className="min-h-[120px]"
+            /> */}
+            <ReactQuill
+              value={noteForm.content}
+              onChange={(value) => setNoteForm({ ...noteForm, content: value })}
+              placeholder="Write your message..."
+              className="rounded-md border"
+              style={{ minHeight: "120px" }}
             />
           </div>
 

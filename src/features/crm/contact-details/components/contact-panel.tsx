@@ -7,6 +7,7 @@ import { ContactsSection } from "./contact/contacts-section";
 import { ActionModals } from "./contact/action-modals";
 import { Contact } from "../types";
 import { QuickActions } from "./contact/quick-actions";
+import { EmptyInsightCard } from "./contact/empty-insight-card";
 
 export function ContactPanel() {
   const [contact, setContact] = useState<Contact>({
@@ -96,6 +97,7 @@ export function ContactPanel() {
       <ContactHeader contact={contact} setContact={setContact} />
 
       <QuickActions onActionClick={setActiveModal} />
+      <EmptyInsightCard onRequestInsights={() => {}} />
 
       <div className="space-y-4">
         <AboutSection contact={contact} setContact={setContact} />
