@@ -5,7 +5,7 @@ export interface Contact {
   email: string;
   phone: string;
   avatar: string;
-  company: {
+  company?: {
     name: string;
     industry: string;
     size: string;

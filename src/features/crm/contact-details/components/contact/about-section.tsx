@@ -23,7 +23,11 @@ export function AboutSection({ contact, setContact }: AboutSectionProps) {
       setContact({
         ...contact,
         company: {
-          ...contact.company,
+          name: contact.company?.name ?? "",
+          industry: contact.company?.industry ?? "",
+          size: contact.company?.size ?? "",
+          location: contact.company?.location ?? "",
+          website: contact.company?.website ?? "",
           description: value,
         },
       });
@@ -42,6 +46,8 @@ export function AboutSection({ contact, setContact }: AboutSectionProps) {
     });
   };
 
+  const isCompany = contact.company;
+
   return (
     <div className="space-y-4">
       <Button
@@ -59,7 +65,23 @@ export function AboutSection({ contact, setContact }: AboutSectionProps) {
 
       {isExpanded && (
         <div className="animate-fade-in space-y-4">
-          <ContactInfo contact={contact} onUpdateField={handleUpdateField} />
+          {isCompany && contact.company && (
+            <>
+              <CompanyInfo
+                company={contact.company}
+                onUpdateField={(value) =>
+                  handleUpdateField("description", value)
+                }
+              />
+
+              <Separator />
+            </>
+          )}
+          <ContactInfo
+            contact={contact}
+            onUpdateField={handleUpdateField}
+            isCompany={!!isCompany}
+          />
 
           <Separator />
 
@@ -67,13 +89,6 @@ export function AboutSection({ contact, setContact }: AboutSectionProps) {
             leadStatus={contact.leadStatus}
             campaignStatus={contact.campaignStatus}
             onLeadStatusChange={handleLeadStatusChange}
-          />
-
-          <Separator />
-
-          <CompanyInfo
-            company={contact.company}
-            onUpdateField={(value) => handleUpdateField("description", value)}
           />
         </div>
       )}

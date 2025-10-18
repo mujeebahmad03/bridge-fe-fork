@@ -1,8 +1,7 @@
 "use client";
 
-import { Target, Workflow, Clock } from "lucide-react";
+import { Target } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -36,11 +35,10 @@ const leadStatusOptions = [
 
 export function StatusSection({
   leadStatus,
-  campaignStatus,
   onLeadStatusChange,
 }: StatusSectionProps) {
-  const campaignProgress =
-    (campaignStatus.step / campaignStatus.totalSteps) * 100;
+  /*  const campaignProgress =
+    (campaignStatus.step / campaignStatus.totalSteps) * 100; */
 
   return (
     <div className="space-y-3">
@@ -74,7 +72,7 @@ export function StatusSection({
       </div>
 
       {/* Campaign Status */}
-      <div className="flex items-start gap-3 text-sm">
+      {/* <div className="flex items-start gap-3 text-sm">
         <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg bg-muted">
           <Workflow className="h-4 w-4 text-muted-foreground" />
         </div>
@@ -88,8 +86,7 @@ export function StatusSection({
                   {campaignStatus.step}/{campaignStatus.totalSteps}
                 </span>
               </div>
-
-              {/* Progress Bar */}
+              
               <div className="space-y-2">
                 <div className="h-2 w-full rounded-full bg-muted">
                   <div
@@ -105,7 +102,7 @@ export function StatusSection({
             </CardContent>
           </Card>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

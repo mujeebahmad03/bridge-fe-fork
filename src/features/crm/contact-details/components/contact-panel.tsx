@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { ContactHeader } from "./contact/contact-header";
 import { AboutSection } from "./contact/about-section";
-import { TasksSection } from "./contact/tasks-section";
 import { ContactsSection } from "./contact/contacts-section";
 import { ActionModals } from "./contact/action-modals";
 import { Contact } from "../types";
+import { QuickActions } from "./contact/quick-actions";
 
 export function ContactPanel() {
   const [contact, setContact] = useState<Contact>({
@@ -16,6 +16,7 @@ export function ContactPanel() {
     email: "nadia.carta@company.com",
     phone: "+1 234 567 890",
     avatar: "/professional-woman-headshot.png",
+    address: "1600 Amphitheatre Parkway, Mountain View, CA 94043",
     company: {
       name: "Google",
       industry: "Software and Technology",
@@ -25,7 +26,6 @@ export function ContactPanel() {
       description:
         "Leading technology company focused on organizing the world's information and making it universally accessible and useful.",
     },
-    address: "1600 Amphitheatre Parkway, Mountain View, CA 94043",
     websiteUrl: "https://about.google/",
     linkedinUrl: "linkedin.com/in/nadiacarta",
     status: "Pending",
@@ -95,16 +95,16 @@ export function ContactPanel() {
     <div className="animate-fade-in space-y-6 p-4 pb-8 lg:p-6">
       <ContactHeader contact={contact} setContact={setContact} />
 
-      {/* <QuickActions onActionClick={setActiveModal} /> */}
+      <QuickActions onActionClick={setActiveModal} />
 
       <div className="space-y-4">
         <AboutSection contact={contact} setContact={setContact} />
-        <TasksSection
+        {/* <TasksSection
           tasks={tasks}
           setTasks={setTasks}
           onCreateTask={() => setActiveModal("task")}
-        />
-        {contact.isCompany && (
+        /> */}
+        {contact.company && (
           <ContactsSection
             contacts={companyContacts}
             setContacts={setCompanyContacts}

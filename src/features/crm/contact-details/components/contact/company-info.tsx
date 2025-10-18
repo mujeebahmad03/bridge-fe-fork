@@ -20,9 +20,9 @@ interface CompanyInfoProps {
 export function CompanyInfo({ company, onUpdateField }: CompanyInfoProps) {
   return (
     <div className="space-y-4">
-      <h4 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+      {/* <h4 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
         Company
-      </h4>
+      </h4> */}
 
       <Card className="gradient-subtle border-border/50">
         <CardContent className="space-y-3 p-4">

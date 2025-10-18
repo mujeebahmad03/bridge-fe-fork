@@ -13,9 +13,14 @@ interface Contact {
 interface ContactInfoProps {
   contact: Contact;
   onUpdateField: (field: string, value: string) => void;
+  isCompany: boolean;
 }
 
-export function ContactInfo({ contact, onUpdateField }: ContactInfoProps) {
+export function ContactInfo({
+  contact,
+  onUpdateField,
+  isCompany,
+}: ContactInfoProps) {
   return (
     <div className="space-y-3">
       <EditableField
@@ -32,20 +37,24 @@ export function ContactInfo({ contact, onUpdateField }: ContactInfoProps) {
         onSave={(value) => onUpdateField("phone", value)}
       />
 
-      <EditableField
-        label="Address"
-        multiline
-        value={contact.address}
-        icon={<MapPin className="h-4 w-4 text-muted-foreground" />}
-        onSave={(value) => onUpdateField("address", value)}
-      />
+      {isCompany && (
+        <>
+          <EditableField
+            label="Address"
+            multiline
+            value={contact.address}
+            icon={<MapPin className="h-4 w-4 text-muted-foreground" />}
+            onSave={(value) => onUpdateField("address", value)}
+          />
 
-      <EditableField
-        label="Website"
-        value={contact.websiteUrl}
-        icon={<ExternalLink className="h-4 w-4 text-muted-foreground" />}
-        onSave={(value) => onUpdateField("websiteUrl", value)}
-      />
+          <EditableField
+            label="Website"
+            value={contact.websiteUrl}
+            icon={<ExternalLink className="h-4 w-4 text-muted-foreground" />}
+            onSave={(value) => onUpdateField("websiteUrl", value)}
+          />
+        </>
+      )}
     </div>
   );
 }

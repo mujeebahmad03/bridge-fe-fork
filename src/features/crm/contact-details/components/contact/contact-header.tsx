@@ -13,8 +13,8 @@ interface ContactHeaderProps {
 
 export function ContactHeader({ contact }: ContactHeaderProps) {
   return (
-    <div className="sticky top-0 -mx-4 space-y-4 border-b border-border/50 bg-card/80 px-4 py-4 backdrop-blur-sm lg:-mx-6 lg:px-6">
-      <div className="flex items-start gap-4">
+    <div className="sticky top-0 -mx-4 space-y-4 border-b border-border/50 bg-card/80 py-4 backdrop-blur-sm lg:-mx-6">
+      <div className="flex flex-col items-start gap-3">
         <Avatar className="h-12 w-12 ring-2 ring-primary/20 lg:h-16 lg:w-16">
           <AvatarImage src={contact.avatar || "/placeholder.svg"} />
           <AvatarFallback className="bg-primary/10 text-sm font-semibold text-primary lg:text-lg">

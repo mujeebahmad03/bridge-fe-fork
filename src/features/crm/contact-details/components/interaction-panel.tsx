@@ -18,6 +18,7 @@ import {
   FileText,
   ExternalLink,
 } from "lucide-react";
+import CampaignInterface from "./interaction/campaign-interface";
 
 const tabs = [
   { id: "activity", label: "Activity", icon: Activity },
@@ -26,6 +27,7 @@ const tabs = [
   { id: "call", label: "Call", icon: Phone },
   { id: "task", label: "Task", icon: Calendar },
   { id: "notes", label: "Notes", icon: FileText },
+  { id: "campaign", label: "Campaign", icon: FileText },
 ];
 
 export function InteractionPanel() {
@@ -64,6 +66,8 @@ export function InteractionPanel() {
         return <TaskInterface />;
       case "notes":
         return <NotesInterface />;
+      case "campaign":
+        return <CampaignInterface />;
       default:
         return <EmptyState />;
     }

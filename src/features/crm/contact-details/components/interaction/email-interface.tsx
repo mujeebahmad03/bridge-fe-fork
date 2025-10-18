@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { EmailComposer } from "./email-composer";
-import { EmailThread } from "./email-thread";
+/* import { EmailThread } from "./email-thread";*/
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Plus, Search, Filter, RefreshCwIcon as Refresh } from "lucide-react";
+import { NewEmailThread } from "./email-trend";
 
 // Mock data
 const mockThreads = [
@@ -69,9 +70,9 @@ export type EmailData = Partial<(typeof mockThreads)[0]>;
 
 export function EmailInterface() {
   const [threads] = useState(mockThreads);
-  const [expandedThreads, setExpandedThreads] = useState<Set<string>>(
+  /* const [expandedThreads, setExpandedThreads] = useState<Set<string>>(
     new Set(),
-  );
+  ); */
   const [showComposer, setShowComposer] = useState(false);
   const [replyingToMessage, setReplyingToMessage] = useState<{
     threadId: string;
@@ -81,7 +82,7 @@ export function EmailInterface() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterBy, setFilterBy] = useState("all");
 
-  const toggleThreadExpansion = (threadId: string) => {
+  /*  const toggleThreadExpansion = (threadId: string) => {
     const newExpanded = new Set(expandedThreads);
     if (newExpanded.has(threadId)) {
       newExpanded.delete(threadId);
@@ -89,7 +90,7 @@ export function EmailInterface() {
       newExpanded.add(threadId);
     }
     setExpandedThreads(newExpanded);
-  };
+  }; */
 
   const handleSendEmail = (data: EmailData) => {
     console.log("Sending email:", data);
@@ -98,7 +99,7 @@ export function EmailInterface() {
     setReplyingToMessage(null);
   };
 
-  const handleReply = (threadId: string, emailId: string) => {
+  /* const handleReply = (threadId: string, emailId: string) => {
     setReplyingToMessage({ threadId, emailId, isReplyAll: false });
   };
 
@@ -113,7 +114,7 @@ export function EmailInterface() {
 
   const handleCancelReply = () => {
     setReplyingToMessage(null);
-  };
+  }; */
 
   const filteredThreads = threads.filter((thread) => {
     if (searchQuery) {
@@ -194,9 +195,10 @@ export function EmailInterface() {
               </Button>
             </div>
           ) : (
-            <div className="space-y-0">
+            <div className="flex flex-col gap-6 space-y-4">
               {filteredThreads.map((thread) => (
-                <EmailThread
+                <>
+                  {/* <EmailThread
                   key={thread.id}
                   thread={thread}
                   isExpanded={expandedThreads.has(thread.id)}
@@ -207,7 +209,31 @@ export function EmailInterface() {
                   replyingToMessage={replyingToMessage}
                   onSendReply={handleSendEmail}
                   onCancelReply={handleCancelReply}
-                />
+                /> */}
+                  <NewEmailThread
+                    subject={thread.subject}
+                    date={"1 day ago"}
+                    guests={[
+                      {
+                        email: "emjay.provde@gmail.com",
+                        name: "emjay provde",
+                        role: "organizer",
+                      },
+                      {
+                        email: "Joshua Obafemi",
+                        name: "Joshua Obafemi",
+                      },
+                      {
+                        email: "abdulmujeebalihma065@gmail.com",
+                        name: "Abdulmujeeb Ahmad",
+                      },
+                    ]}
+                    when="Monday, Oct 6, 2025 8am - 9am (Eastern Time - New York)"
+                    accepted={true}
+                    onReply={() => {}}
+                    onReplyWithAI={() => {}}
+                  />
+                </>
               ))}
             </div>
           )}

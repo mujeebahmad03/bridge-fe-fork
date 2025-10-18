@@ -59,13 +59,13 @@ export function CRMInterface() {
       </header>
 
       <div className="flex h-screen flex-col lg:flex-row">
-        <div className="border-subtle gradient-sidebar scrollbar-thin hidden w-96 overflow-y-auto border-r lg:block">
-          <ContactPanel />
-        </div>
-
         {/* Interaction Timeline Panel - Fixed height with internal scrolling */}
         <div className="h-full flex-1 bg-background">
           <InteractionPanel />
+        </div>
+
+        <div className="border-subtle gradient-sidebar scrollbar-thin hidden w-96 overflow-y-auto border-r lg:block">
+          <ContactPanel />
         </div>
       </div>
     </>
