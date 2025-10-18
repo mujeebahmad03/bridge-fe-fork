@@ -165,8 +165,6 @@ export function ActivityTimeline() {
 
   const handleReply = () => {};
 
-  const handleReplyWithAI = () => {};
-
   const handleRequestSuggestions = () => {};
 
   return (
@@ -289,7 +287,6 @@ export function ActivityTimeline() {
                                 when="Monday, Oct 6, 2025 8am - 9am (Eastern Time - New York)"
                                 accepted={true}
                                 onReply={handleReply}
-                                onReplyWithAI={handleReplyWithAI}
                               />
                             )}
 
