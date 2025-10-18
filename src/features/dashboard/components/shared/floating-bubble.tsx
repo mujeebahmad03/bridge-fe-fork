@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Target } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -18,7 +18,7 @@ interface FloatingBubbleProps {
 }
 
 export function FloatingBubble({ taskCount, onToggle }: FloatingBubbleProps) {
-  const bubbleVariants = {
+  const bubbleVariants: Variants = {
     hidden: {
       scale: 0,
       opacity: 0,

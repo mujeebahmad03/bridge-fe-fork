@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 
 import { DashboardHeader } from "@/dashboard/components/shared";
@@ -38,7 +38,7 @@ export default function DashboardPageContent() {
 
       <motion.main
         className="container mx-auto space-y-6 px-4"
-        variants={containerVariants}
+        variants={containerVariants as Variants}
         initial="hidden"
         animate="visible"
       >
