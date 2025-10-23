@@ -18,15 +18,15 @@ export function ContactPanel() {
     phone: "+1 234 567 890",
     avatar: "/professional-woman-headshot.png",
     address: "1600 Amphitheatre Parkway, Mountain View, CA 94043",
-    company: {
-      name: "Google",
-      industry: "Software and Technology",
-      size: "100-500",
-      location: "New York, US",
-      website: "https://about.google/",
-      description:
-        "Leading technology company focused on organizing the world's information and making it universally accessible and useful.",
-    },
+    // company: {
+    //   name: "Google",
+    //   industry: "Software and Technology",
+    //   size: "100-500",
+    //   location: "New York, US",
+    //   website: "https://about.google/",
+    //   description:
+    //     "Leading technology company focused on organizing the world's information and making it universally accessible and useful.",
+    // },
     websiteUrl: "https://about.google/",
     linkedinUrl: "linkedin.com/in/nadiacarta",
     status: "Pending",

@@ -3,12 +3,12 @@ import { LucideIcon } from "lucide-react";
 export interface Campaign {
   id: string;
   status:
-  | "draft"
-  | "in_progress"
-  | "completed"
-  | "paused"
-  | "in_error"
-  | "archived";
+    | "draft"
+    | "in_progress"
+    | "completed"
+    | "paused"
+    | "in_error"
+    | "archived";
   name: string;
   leadsCompleted: number;
   leadsTotal: number;

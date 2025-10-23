@@ -4,8 +4,5 @@ export * from "./chat-input";
 export * from "./chat-message";
 export * from "./dashboard-header";
 export * from "./floating-bubble";
-export * from "./floating-panel";
 export * from "./loading-dots";
 export * from "./quick-stats";
-export * from "./suggestion-item";
-export * from "./task-item";

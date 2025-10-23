@@ -1,21 +1,4 @@
-export interface Task {
-  id: number;
-  type: "call" | "email" | "linkedin";
-  title: string;
-  description: string;
-  priority: "high" | "medium" | "low";
-  dueTime: string;
-  campaign: string;
-}
-
-export interface Suggestion {
-  id: number;
-  type: "call" | "email" | "linkedin";
-  title: string;
-  preview: string;
-  recipient: string;
-  campaign: string;
-}
+import { Company, Contact } from "@/crm/dashboard/types";
 
 export interface ChatMessage {
   role: "user" | "assistant";
@@ -57,4 +40,47 @@ export interface MessageTemplate {
   content: string;
   campaign: string;
   lead: string;
+}
+
+export enum TaskType {
+  CALL = "call",
+  EMAIL = "email",
+  LINKEDIN = "linkedIn",
+}
+
+export enum TaskPriority {
+  LOW = "low",
+  MEDIUM = "medium",
+  HIGH = "high",
+}
+
+export enum TaskStatus {
+  TODO = "todo",
+  IN_PROGRESS = "in_progress",
+  COMPLETED = "completed",
+}
+
+export interface Assignee {
+  id: string;
+  name: string;
+  avatar?: string;
+}
+
+export interface Task {
+  id: string;
+  title: string;
+  description: string;
+  priority: TaskPriority;
+  contact?: string;
+  contactData?: Contact;
+  company?: string;
+  companyData?: Company;
+  campaign: string;
+  assignedTo: string | Assignee;
+  dueDate: Date;
+  dueTime: string;
+  status: TaskStatus;
+  taskType: TaskType;
+  isOverdue: boolean;
+  hasReplies: boolean;
 }

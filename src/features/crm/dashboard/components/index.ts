@@ -2,6 +2,7 @@ export { AddDropdownMenu } from "./add-dropdown-menu";
 export { ContactsTable } from "./contacts-table";
 export { CompaniesTable } from "./companies-table";
 export { LeadsTable } from "./leads-table";
+export { LeadListTable } from "./lead-list";
 export { PageLoading } from "./loader";
 export { ImportUpload } from "./import/import-upload";
 export { ImportMapping } from "./import/import-mapping";

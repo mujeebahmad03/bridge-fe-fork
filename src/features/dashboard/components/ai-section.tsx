@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { AIAssistant } from "@/dashboard/components/shared";
 import { itemVariants } from "@/dashboard/constants/animations";
 
@@ -11,7 +11,7 @@ interface AISectionProps {
 
 export function AISection({ isExpanded, onToggleExpanded }: AISectionProps) {
   return (
-    <motion.div variants={itemVariants as Variants}>
+    <motion.div variants={itemVariants}>
       <AIAssistant
         isExpanded={isExpanded}
         onToggleExpanded={onToggleExpanded}
